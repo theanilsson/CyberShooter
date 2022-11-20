@@ -74,3 +74,6 @@ Plugins/*/Intermediate/*
 DerivedDataCache/*
 
 *.rsp
+*.opendb
+Content/Dynamic/Levels/FirstPersonExampleMap_BuiltData.uasset
+.vs/S05_TestingGrounds/v15/ipch/
