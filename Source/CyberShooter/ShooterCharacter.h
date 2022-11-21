@@ -34,6 +34,12 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float RotationRate = 40;
 
+	UPROPERTY()
+	class AGun* Gun;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Components")
+	TSubclassOf<AGun> GunClass;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
