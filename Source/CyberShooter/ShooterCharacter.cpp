@@ -23,8 +23,13 @@ AShooterCharacter::AShooterCharacter()
 void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	CurrentHealth = MaxHealth;
 	
 	Gun = GetWorld()->SpawnActor<AGun>(GunClass);
+	GetMesh()->HideBoneByName("weapon_r", EPhysBodyOp::PBO_None);
+	Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, "WeaponSocket");
+	Gun->SetOwner(this);
 }
 
 void AShooterCharacter::MoveForward(float Value)
@@ -47,6 +52,11 @@ void AShooterCharacter::LookSidewaysRate(float Value)
 	AddControllerYawInput(Value * RotationRate * UGameplayStatics::GetWorldDeltaSeconds(this));
 }
 
+void AShooterCharacter::PullTrigger()
+{
+	Gun->PullTrigger();
+}
+
 // Called every frame
 void AShooterCharacter::Tick(float DeltaTime)
 {
@@ -66,5 +76,19 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAxis("MoveForward", this, &AShooterCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveSideways", this, &AShooterCharacter::MoveSideways);
 	PlayerInputComponent->BindAction("Jump", EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("Shoot", EInputEvent::IE_Pressed, this, &AShooterCharacter::PullTrigger);
 }
 
+float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const &DamageEvent, class AController *EventInstigator, AActor *DamageCauser)
+{
+	float DamageDone = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	DamageDone = FMath::Min(DamageDone, CurrentHealth);
+	CurrentHealth -= DamageDone;
+	UE_LOG(LogTemp, Display, TEXT("Health now %f"), CurrentHealth);
+	return DamageDone;
+}
+
+bool AShooterCharacter::IsAlive() const
+{
+	return CurrentHealth > 0;
+}
