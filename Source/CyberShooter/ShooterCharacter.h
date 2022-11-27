@@ -30,7 +30,6 @@ private:
 	void MoveSideways(float Value);
 	void LookUpRate(float Value);
 	void LookSidewaysRate(float Value);
-	void PullTrigger();
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float RotationRate = 40;
@@ -55,5 +54,7 @@ public:
 	float TakeDamage(float DamageAmount, struct FDamageEvent const &DamageEvent, class AController *EventInstigator, AActor *DamageCauser) override;
 	UFUNCTION(BlueprintPure)
 	bool IsAlive() const;
+	
+	void PullTrigger();
 
 };

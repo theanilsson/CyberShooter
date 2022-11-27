@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Gun.h"
+#include "Components/CapsuleComponent.h"
 
 // Sets default values
 AShooterCharacter::AShooterCharacter()
@@ -85,6 +86,13 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 	DamageDone = FMath::Min(DamageDone, CurrentHealth);
 	CurrentHealth -= DamageDone;
 	UE_LOG(LogTemp, Display, TEXT("Health now %f"), CurrentHealth);
+
+	if(!IsAlive())
+	{
+		DetachFromControllerPendingDestroy();
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
+
 	return DamageDone;
 }
 

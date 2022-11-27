@@ -40,7 +40,10 @@ void AGun::PullTrigger()
 	// DrawDebugPoint(GetWorld(), EndLocation, 25.0f, FColor::Orange, true);
 	// DrawDebugPoint(GetWorld(), ViewPointLocation, 25.0f, FColor::Orange, true);
 	FHitResult HitResult;
-	bool HitSomething = GetWorld()->LineTraceSingleByChannel(HitResult, ViewPointLocation, EndLocation, ECollisionChannel::ECC_GameTraceChannel1);
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(this);
+	Params.AddIgnoredActor(OwnerPawn);
+	bool HitSomething = GetWorld()->LineTraceSingleByChannel(HitResult, ViewPointLocation, EndLocation, ECollisionChannel::ECC_GameTraceChannel1, Params);
 	if(HitSomething)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEmitter, HitResult.Location, (-ViewPointRotation.Vector()).Rotation());
