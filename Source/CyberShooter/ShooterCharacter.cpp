@@ -7,7 +7,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Gun.h"
 #include "Components/CapsuleComponent.h"
-
+#include "CyberShooterGameModeBase.h"
 // Sets default values
 AShooterCharacter::AShooterCharacter()
 {
@@ -89,6 +89,11 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 
 	if(!IsAlive())
 	{
+		ACyberShooterGameModeBase* GameMode = GetWorld()->GetAuthGameMode<ACyberShooterGameModeBase>();
+		if(GameMode != nullptr)
+		{
+			GameMode->PawnKilled(this);
+		}
 		DetachFromControllerPendingDestroy();
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}

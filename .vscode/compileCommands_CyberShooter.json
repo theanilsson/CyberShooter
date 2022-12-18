@@ -65,12 +65,32 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.0\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\Source\\CyberShooter\\CyberShooterPlayerController.cpp",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_CyberShooter\\CyberShooter.211.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\Source\\CyberShooter\\CyberShooterPlayerController.h",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_CyberShooter\\CyberShooter.211.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.0\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\Source\\CyberShooter\\Gun.cpp",
 		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_CyberShooter\\CyberShooter.211.rsp\"",
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.0\\Engine\\Source"
 	},
 	{
 		"file": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\Source\\CyberShooter\\Gun.h",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_CyberShooter\\CyberShooter.211.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\Source\\CyberShooter\\KillEmAllGameMode.cpp",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_CyberShooter\\CyberShooter.211.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\Source\\CyberShooter\\KillEmAllGameMode.h",
 		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_CyberShooter\\CyberShooter.211.rsp\"",
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.0\\Engine\\Source"
 	},

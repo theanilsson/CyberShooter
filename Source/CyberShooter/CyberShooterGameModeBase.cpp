@@ -3,3 +3,8 @@
 
 #include "CyberShooterGameModeBase.h"
 
+
+void ACyberShooterGameModeBase::PawnKilled(APawn* PawnKilled)
+{
+    
+}
