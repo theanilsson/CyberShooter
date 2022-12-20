@@ -24,6 +24,10 @@ private:
 	class USkeletalMeshComponent* GunMesh;
 
 	UPROPERTY(EditAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	class USoundBase* MuzzleSound;
+	UPROPERTY(EditAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	class USoundBase* HitSound;
+	UPROPERTY(EditAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UParticleSystem* MuzzleEmitter;
 	UPROPERTY(EditAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UParticleSystem* HitEmitter;
