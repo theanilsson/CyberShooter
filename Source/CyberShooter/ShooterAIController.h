@@ -22,6 +22,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	bool IsAlive() const;
+
 private:
 	// UPROPERTY(EditAnywhere)
 	// float AcceptanceRadius = 200.0f;

@@ -25,35 +25,45 @@ void AGun::PullTrigger()
 {
 	UGameplayStatics::SpawnEmitterAttached(MuzzleEmitter, GunMesh, "MuzzleFlashSocket");
 
-	APawn* OwnerPawn = Cast<APawn>(GetOwner());
-	if(!OwnerPawn) return;
-	AController* OwnerController = OwnerPawn->GetController();
-	if(!OwnerController) return;
+	FHitResult Hit;
+	FVector ShotDirection;
+	bool bGunHitTarget = GunTrace(Hit, ShotDirection);
+	if(bGunHitTarget)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEmitter, Hit.Location, (ShotDirection).Rotation());
+		AActor* HitActor = Hit.GetActor();
+		if(HitActor)
+		{
+			FPointDamageEvent DamageEvent (Damage, Hit, ShotDirection, nullptr);
+			AController* OwnerController = GetOwnerController();
+			HitActor->TakeDamage(Damage, DamageEvent, OwnerController, GetOwner());
+		}
+	}
+}
+
+bool AGun::GunTrace(FHitResult& Hit, FVector& ShotDirection)
+{
 
 	FVector ViewPointLocation;
 	FRotator ViewPointRotation;
+	AController* OwnerController = GetOwnerController();
+	if(OwnerController == nullptr) return false;
 	OwnerController->GetPlayerViewPoint(ViewPointLocation, ViewPointRotation);
+	ShotDirection = -ViewPointRotation.Vector();
 
-	//"ECC_GameTraceChannel1"
 	FVector EndLocation = ViewPointLocation + ViewPointRotation.Vector() * MaxRange;
 
-	// DrawDebugPoint(GetWorld(), EndLocation, 25.0f, FColor::Orange, true);
-	// DrawDebugPoint(GetWorld(), ViewPointLocation, 25.0f, FColor::Orange, true);
-	FHitResult HitResult;
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(this);
-	Params.AddIgnoredActor(OwnerPawn);
-	bool HitSomething = GetWorld()->LineTraceSingleByChannel(HitResult, ViewPointLocation, EndLocation, ECollisionChannel::ECC_GameTraceChannel1, Params);
-	if(HitSomething)
-	{
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitEmitter, HitResult.Location, (-ViewPointRotation.Vector()).Rotation());
-		FPointDamageEvent DamageEvent (Damage, HitResult, -ViewPointRotation.Vector(), nullptr);
-		AActor* HitActor = HitResult.GetActor();
-		if(HitActor)
-		{
-			HitActor->TakeDamage(Damage, DamageEvent, OwnerController, OwnerPawn);
-		}
-	}
+	Params.AddIgnoredActor(GetOwner());
+	return GetWorld()->LineTraceSingleByChannel(Hit, ViewPointLocation, EndLocation, ECollisionChannel::ECC_GameTraceChannel1, Params);
+}
+
+AController* AGun::GetOwnerController() const
+{
+	APawn* OwnerPawn = Cast<APawn>(GetOwner());
+	if(!OwnerPawn) return nullptr;
+	return OwnerPawn->GetController();
 }
 
 // Called when the game starts or when spawned

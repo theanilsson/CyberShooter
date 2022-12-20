@@ -17,4 +17,7 @@ class CYBERSHOOTER_API AKillEmAllGameMode : public ACyberShooterGameModeBase
 public:
 	virtual void PawnKilled(APawn* PawnKilled) override;
 
+private:
+	void EndGame(bool bIsPlayerWinner);
+
 };

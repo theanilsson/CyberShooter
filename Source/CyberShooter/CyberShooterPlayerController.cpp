@@ -9,10 +9,21 @@ void ACyberShooterPlayerController::GameHasEnded(class AActor *EndGameFocus, boo
 {
     Super::GameHasEnded(EndGameFocus, bIsWinner);
 
-    UUserWidget* LoseScreenWidget = CreateWidget(this, LoseScreenClass);
-    if(LoseScreenWidget != nullptr)
+    if(bIsWinner)
     {
-        LoseScreenWidget->AddToViewport();
+        UUserWidget* WinScreenWidget = CreateWidget(this, WinScreenClass);
+        if(WinScreenWidget)
+        {
+            WinScreenWidget->AddToViewport();
+        }
+    }
+    else
+    {
+        UUserWidget* LoseScreenWidget = CreateWidget(this, LoseScreenClass);
+        if(LoseScreenWidget)
+        {
+            LoseScreenWidget->AddToViewport();
+        }
     }
 
     GetWorldTimerManager().SetTimer(RestartHandle, this, &APlayerController::RestartLevel, RestartDelay);
