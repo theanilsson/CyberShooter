@@ -1,19 +1,14 @@
 {
-    "configurations": [
-        {
-            "name": "CyberShooterEditor Editor Win64 Development (CyberShooter)",
-            "intelliSenseMode": "msvc-x64",
-            "compileCommands": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_CyberShooter.json",
-            "cStandard": "c17",
-            "cppStandard": "c++17"
-        },
-        {
-            "name": "Win32",
-            "intelliSenseMode": "msvc-x64",
-            "compileCommands": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_Default.json",
-            "cStandard": "c17",
-            "cppStandard": "c++17"
-        }
-    ],
-    "version": 4
+	"configurations": [
+		{
+			"name": "CyberShooterEditor Editor Win64 Development (CyberShooter)",
+			"intelliSenseMode": "msvc-x64",
+			"compileCommands": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_CyberShooter.json"
+		},
+		{
+			"name": "Win32",
+			"intelliSenseMode": "msvc-x64",
+			"compileCommands": "C:\\Users\\Vysterhea\\Documents\\Unreal Projects\\CyberShooter\\.vscode\\compileCommands_Default.json"
+		}
+	]
 }
