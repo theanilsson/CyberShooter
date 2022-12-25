@@ -54,6 +54,8 @@ public:
 	float TakeDamage(float DamageAmount, struct FDamageEvent const &DamageEvent, class AController *EventInstigator, AActor *DamageCauser) override;
 	UFUNCTION(BlueprintPure)
 	bool IsAlive() const;
+	UFUNCTION(BlueprintPure)
+	float GetHealthPercent() const;
 	
 	void PullTrigger();
 

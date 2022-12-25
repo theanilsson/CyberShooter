@@ -5,10 +5,24 @@
 #include "TimerManager.h"
 #include "Blueprint/UserWidget.h"
 
+void ACyberShooterPlayerController::BeginPlay()
+{
+    Super::BeginPlay();
+    HudWidget = CreateWidget(this, HudClass);
+    if(HudWidget)
+    {
+        HudWidget->AddToViewport();
+    }
+}
+
 void ACyberShooterPlayerController::GameHasEnded(class AActor *EndGameFocus, bool bIsWinner)
 {
     Super::GameHasEnded(EndGameFocus, bIsWinner);
 
+    if(HudWidget)
+    {
+        HudWidget->RemoveFromViewport();
+    }
     if(bIsWinner)
     {
         UUserWidget* WinScreenWidget = CreateWidget(this, WinScreenClass);
